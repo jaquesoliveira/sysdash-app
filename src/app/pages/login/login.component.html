@@ -1,0 +1,48 @@
+
+<mat-toolbar color="primary" >
+  <mat-toolbar-row style="padding-left: 10px;">
+    <img src="assets/images/bar-chart.png" style="width: 50px;" alt="">
+    <span class="ms-2">SysDash</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- <div>
+      <img src="assets/images/bar-chart.png"style="width: 50px;" alt="">
+    </div> -->
+    
+   <div>
+    <h5 class="width:90%">Login</h5>
+   </div>   
+    
+  </div>
+  <mat-divider class="mb-4"></mat-divider>
+  <div class="row">
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuário</mat-label>
+        <input matInput [(ngModel)]="usuario">
+      </mat-form-field>
+    </div>        
+  </div>
+
+  <div class="row">
+    <div>
+      <mat-form-field >
+        <mat-label>Senha</mat-label>
+        <input matInput [(ngModel)]="senha" type="password">
+      </mat-form-field>
+    </div>        
+  </div>
+
+  <div class="row">
+    <div>
+      <button mat-raised-button color="primary" 
+      (click)="logar()">Logar</button>
+    </div>        
+  </div>
+   
+  </div>

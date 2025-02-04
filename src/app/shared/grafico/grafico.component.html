@@ -1,0 +1,26 @@
+<div >
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-3">
+          {{usuario}}
+          <button mat-mini-fab 
+            color="primary"
+            class="float-end"
+            style="margin-top: -8px;"
+            (click)="novoAcompanhamento()"
+            [hidden]="nome !== usuario" >
+            <mat-icon>add</mat-icon>
+          </button>
+        </h5>
+        <mat-divider class="mb-3"></mat-divider>
+        <p class="card-text">Prospect: {{prospect}}</p>
+        <p class="card-text">Contato: {{contato}}</p>
+        <p class="card-text">Qualificado: {{qualificado}}</p>
+        <mat-divider class="mb-3"></mat-divider>
+        <p class="card-text">Total: {{ getTotal(prospect, contato, qualificado)}}</p>
+
+        <canvas [id]="canvasName" 
+          style="height: 300px; max-height: 300px;">{{grafico}}</canvas>
+      </div>
+    </div>
+</div>

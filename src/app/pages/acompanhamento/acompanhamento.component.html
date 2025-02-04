@@ -1,0 +1,48 @@
+<div class="container mt-2">
+    <div class="row mt-3">
+        <h5 style="color: #555;" class="mb-3">Registrar Acompanhamento</h5>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row mt-3">
+        <mat-form-field
+            class="col-lg-4 col-12">    
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="nome" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-3 col-12">
+            <mat-label>Tipo</mat-label>
+            <select matNativeControl 
+                [(ngModel)]="tipoSelecionado" 
+                name="tipo" required>
+                <ng-container *ngFor="let tipo of tipos;">
+                    <option [ngValue]="tipo">{{tipo}}</option>                                            
+                </ng-container>              
+            </select>
+        </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+    
+    <div class="row mt-3">
+        <div class="col-md-2 ">
+            <button mat-raised-button
+            [disabled]="tipoSelecionado ===''"
+            color="primary" 
+            class="btn btn-primary col-12"
+            (click)="salvar()"            
+            type="button">
+            Salvar
+        </button></div>
+        
+        <div class="col-md-2">
+            <button mat-raised-button
+            color="secundary" 
+            class="btn btn-primary col-12" 
+            (click)="cancelar()"
+            type="button">
+            Cancelar
+        </button></div>
+    </div>
+</div>
