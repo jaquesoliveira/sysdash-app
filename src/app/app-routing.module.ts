@@ -5,10 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AcompanhamentoComponent } from './pages/acompanhamento/acompanhamento.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuariosListComponent } from './pages/usuarios-list/usuarios-list.component';
-import { LoginService } from './services/login.service';
-import { AuthService } from './guard/auth-service';
 import { AuthGuard } from './guard/auth-guard';
-import { testeGuard } from './guard/teste.guard';
 
 const routes: Routes = [
   {
