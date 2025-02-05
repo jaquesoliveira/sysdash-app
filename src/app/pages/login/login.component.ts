@@ -31,19 +31,8 @@ export class LoginComponent implements OnInit, AfterViewInit{
   }
 
   logar(){
-    this.service.logar(this.usuario, this.senha).subscribe({
-      next: (data) => {                
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('nomeUsuario', data.userName);
-        localStorage.setItem('permissao', data.role);
-        this.mostrar.mostrarMenu();
-
-        if(data.role === 'ADMIN'){
-          this.mostrar.ehAdmin()
-        }else{
-          this.mostrar.naoEhAdmin()
-        }
-        
+    this.service.login(this.usuario, this.senha).subscribe({
+      next: (data) => {         
         this.route.navigate(['home'])
       },
       error: (erro) => {

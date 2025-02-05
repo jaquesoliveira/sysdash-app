@@ -32,10 +32,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(){
     this.service.findAll().subscribe({
-      next: (data) => {  
-        console.log(data);
-        this.cards = data
-        
+      next: (data) => {
+        this.cards = data        
       },
       error: (erro) => {
         console.log(erro.erro);        

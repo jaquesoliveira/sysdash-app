@@ -11,15 +11,25 @@ import { ExibirMenuService } from './exibir-menu.service';
 })
 export class LoginService {
   private url = enviroment.baseUrl;
+  isLoggedIn: boolean = false;
+  role: string[] = [];  
 
   constructor(private httpClient: HttpClient,
     private route: Router, private mostrar: ExibirMenuService   
   ) { }
   
-  logar(usuario:string, senha:string){
+  login(usuario:string, senha:string){
     let httpOptions = this.getHeaders(usuario, senha);
     return this.httpClient.get<InfoUsuario>(this.url.concat(`/authenticate`), httpOptions)    
-    .pipe(catchError(this.handlerError))
+    .pipe(
+      map(response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('nomeUsuario', response.userName);
+        localStorage.setItem('permissao', response.role);
+        this.isLoggedIn = true
+        return response
+      }), 
+      catchError(this.handlerError))
   }
 
   private getHeaders(usuario:string, senha:string){
@@ -39,6 +49,7 @@ export class LoginService {
     localStorage.removeItem('nomeUsuario');
     localStorage.removeItem('permissao');
     this.route.navigate(['login'])
+    this.isLoggedIn = false
   }
 
   handlerError(error: HttpErrorResponse){
@@ -51,5 +62,15 @@ export class LoginService {
       errorMessage = error.error.message
     }
     return throwError(errorMessage);
+  }
+
+  isAuthenticated(): boolean {
+    return this.isLoggedIn;
+  }
+
+  getRoles() {
+    let userRoles: String[] = []
+    userRoles.push(localStorage.getItem('permissao'));
+    return userRoles;
   }
 }
