@@ -31,6 +31,16 @@ export class HomeComponent implements OnInit {
   ){}
 
   ngOnInit(){
+    this.listar()
+
+    this.usuario = localStorage.getItem('nomeUsuario');
+  }
+
+  refresh(){
+    this.listar()
+  }
+
+  listar(){
     this.service.findAll().subscribe({
       next: (data) => {
         this.cards = data        
@@ -39,8 +49,6 @@ export class HomeComponent implements OnInit {
         console.log(erro.erro);        
       }
     })
-
-    this.usuario = localStorage.getItem('nomeUsuario');
   }
 
   getCanvasName(){

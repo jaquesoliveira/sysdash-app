@@ -1,14 +1,27 @@
 <div class="container mt-2">
   <div class="row mt-3">
-    <h5 style="color: #555;" class=" mb-3">Dashboard
-      <mat-slide-toggle class="float-end" 
-        [checked] = "verTodos" 
-        (change)="soEu()" 
-        labelPosition="before">Ver todos
-      </mat-slide-toggle>
-    </h5>
+    <h5 style="color: #555;" class=" mb-3">Dashboard     
+    </h5>    
   </div>
+  <mat-divider></mat-divider>
 
+  <div class="d-flex justify-content-start align-middle mb-2">
+    <button  mat-mini-fab color="primary"
+      style="margin-top: 10px;"
+      class="align-middle" 
+      (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+    <mat-slide-toggle
+      class="ms-3"
+      style="margin-top: 17px;"
+      color="primary"
+      [checked] = "verTodos" 
+      (change)="soEu()" 
+      labelPosition="before">Ver todos
+    </mat-slide-toggle>
+  </div>
   <mat-divider></mat-divider>
 
   <div class="row mt-3">
